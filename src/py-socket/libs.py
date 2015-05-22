@@ -5,8 +5,6 @@ import tarfile
 import zipfile
 from cStringIO import StringIO
 
-import os
-
 def name_from_url(url):
     basename = os.path.basename(url)
     if (basename.find('tar') > 0):
@@ -38,12 +36,12 @@ def extract_file(url, dir_path='.'):
     finally:
         os.chdir(cwd)
 
-def install_lib():
+if __name__ == '__main__':
+    curr_dir = os.path.dirname(__file__)
     # get package
     get_list = [['http://www.cosc.canterbury.ac.nz/greg.ewing/python_gui/PyGUI-2.5.3.tar.gz', 'PyGUI'],
-                ('http://liquidtelecom.dl.sourceforge.net/project/pywin32/pywin32/Build%20219/pywin32-219.zip', ''),
-                ['http://downloads.sourceforge.net/project/ctypes/ctypes/1.0.2/ctypes-1.0.2.tar.gz', ''],
-                ['http://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2', '']
+                ('http://liquidtelecom.dl.sourceforge.net/project/pywin32/pywin32/Build%20219/pywin32-219.zip', '')
+                ['http://downloads.sourceforge.net/project/ctypes/ctypes/1.0.2/ctypes-1.0.2.tar.gz','']
                 ]
     libs_dir = 'libs'
     for url, name in get_list:
@@ -59,13 +57,3 @@ def install_lib():
             
             
     print 'libs install done !!'
-
-def install_lib1():
-    print('run: pip install pyglet')
-
-def libs_path():
-    pass
-
-curr_dir = os.path.dirname(__file__)
-if __name__ == '__main__':
-   install_lib1()
