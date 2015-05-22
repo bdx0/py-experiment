@@ -13,10 +13,12 @@ label = pyglet.text.Label('Hello, world',
                           font_size=36,
                           x=window.width // 2, y=window.height // 2,
                           anchor_x='center', anchor_y='center')
+context = window.context
+config = context.config
 
 @window.event
 def on_draw():
     window.clear()
-    label.draw()
+    label.draw() 
 
 pyglet.app.run()
