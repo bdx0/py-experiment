@@ -43,8 +43,11 @@ def install_lib():
     get_list = [['http://www.cosc.canterbury.ac.nz/greg.ewing/python_gui/PyGUI-2.5.3.tar.gz', 'PyGUI'],
                 ('http://liquidtelecom.dl.sourceforge.net/project/pywin32/pywin32/Build%20219/pywin32-219.zip', ''),
                 ['http://downloads.sourceforge.net/project/ctypes/ctypes/1.0.2/ctypes-1.0.2.tar.gz', ''],
-                ['http://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2', '']
-                ['https://pypi.python.org/packages/source/t/tinydb/tinydb-2.3.2.zip', '']
+                ['http://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2', ''],
+                ['https://www.libsdl.org/release/SDL2-2.0.3-win32-x64.zip', ''],
+                ['https://www.libsdl.org/release/SDL2-devel-2.0.3-mingw.tar.gz', ''],
+                ['https://www.libsdl.org/release/SDL2-2.0.3-win32-x86.zip', ''],
+                ['https://visualstudiomagazine.com/~/media/ECG/visualstudiomagazine/Code%20Download/2014/11/1014vsm_mccaffrey.zip', '']
                 ]
     libs_dir = 'libs'
     for url, name in get_list:
@@ -62,11 +65,11 @@ def install_lib():
     print 'libs install done !!'
 
 def install_lib1():
-    print('run: pip install pyglet')
+    print('run: pip install pyglet pysdl2 numpy PIL')
 
 def libs_path():
     pass
 
 curr_dir = os.path.dirname(__file__)
 if __name__ == '__main__':
-   install_lib1()
+   install_lib()
