@@ -1,11 +1,12 @@
 #!/usr/bin/env python 
-import urllib
-import os
-import tarfile
-import zipfile
 from cStringIO import StringIO
-
 import os
+import sys
+import tarfile
+import urllib
+import zipfile
+import subprocess
+
 
 def name_from_url(url):
     basename = os.path.basename(url)
@@ -61,12 +62,19 @@ def install_lib():
             
     print 'libs install done !!'
 
-def install_lib1():
-    print('run: pip install pyglet')
+def install_extern_lib():
+    print 'install external library ...'
+    pip_cmd = 'install'
+    pip_arg = '-v'
+    pip_param = 'matplotlib'
+    subprocess.call([pip_bin, pip_cmd, pip_arg, pip_param])
 
 def libs_path():
     pass
 
 curr_dir = os.path.dirname(__file__)
+python_bin = sys.executable;
+pip_bin = os.path.dirname(python_bin) + '/Scripts/pip.exe'
 if __name__ == '__main__':
-   install_lib1()
+   install_extern_lib()
+   
