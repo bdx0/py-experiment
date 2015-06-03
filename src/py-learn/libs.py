@@ -41,11 +41,10 @@ def extract_file(url, dir_path='.'):
 
 def install_lib():
     # get package
-    get_list = [['http://www.cosc.canterbury.ac.nz/greg.ewing/python_gui/PyGUI-2.5.3.tar.gz', 'PyGUI'],
-                ('http://liquidtelecom.dl.sourceforge.net/project/pywin32/pywin32/Build%20219/pywin32-219.zip', ''),
-                ['http://downloads.sourceforge.net/project/ctypes/ctypes/1.0.2/ctypes-1.0.2.tar.gz', ''],
-                ['http://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2', '']
-                ['https://pypi.python.org/packages/source/t/tinydb/tinydb-2.3.2.zip', '']
+    get_list = [
+                ['https://pypi.python.org/packages/source/t/tinydb/tinydb-2.3.2.zip', ''],
+                ['http://liquidtelecom.dl.sourceforge.net/project/math-atlas/Stable/3.10.2/atlas3.10.2.tar.bz2', ''],
+                ['https://pypi.python.org/packages/source/s/scikit-learn/scikit-learn-0.16.1.tar.gz', '']
                 ]
     libs_dir = 'libs'
     for url, name in get_list:
@@ -63,18 +62,31 @@ def install_lib():
     print 'libs install done !!'
 
 def install_extern_lib():
-    print 'install external library ...'
-    pip_cmd = 'install'
-    pip_arg = '-v'
-    pip_param = 'matplotlib'
-    subprocess.call([pip_bin, pip_cmd, pip_arg, pip_param])
+    print 'install external library ...' 
+    os.environ['VS90COMNTOOLS'] = os.environ['VS120COMNTOOLS'] 
+    pkg_libs = ['matplotlib', 'scikit-learn', 'tinydb', 'pygal', 'pygame']
+    for item in pkg_libs:
+        pip_cmd = 'install'
+        pip_arg = '-v'
+        pip_param = item
+        os.system(pip_bin + '  ' + pip_cmd + '  ' + pip_arg + '  ' + pip_param)
+#         subprocess.call([pip_bin, pip_cmd, pip_arg, pip_param])
+    os.environ['CXX'] = 'g++'
+    os.environ['CC'] = 'gcc'
+    os.system(pip_bin + ' install scipy')
+#     subprocess.call([pip_bin, 'install', 'scipy'])
+    print 'Done' 
 
 def libs_path():
     pass
 
 curr_dir = os.path.dirname(__file__)
 python_bin = sys.executable;
-pip_bin = os.path.dirname(python_bin) + '/Scripts/pip.exe'
+pip_bin = os.path.dirname(python_bin) + '\Scripts\pip.exe'
 if __name__ == '__main__':
-   install_extern_lib()
+    print python_bin
+    print pip_bin
+#     install_lib()
+    print os.environ['PYTHONPATH'] 
+    install_extern_lib()
    
