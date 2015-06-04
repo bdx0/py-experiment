@@ -93,6 +93,12 @@ git-pub:
 gitk:
 	gitk.cmd --all
 	@echo Done $@ !!
+	
+.PHONY: git-up
+git-up:
+	git fetch --all
+	git pull origin
+	@echo Done $@ !!
 
 .suffixes: .c .cc .cpp .h .o .py .java
 .SHELLFLAGS: -e
