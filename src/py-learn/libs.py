@@ -64,7 +64,8 @@ def install_lib():
 def install_extern_lib():
     print 'install external library ...' 
     os.environ['VS90COMNTOOLS'] = os.environ['VS120COMNTOOLS'] 
-    pkg_libs = ['matplotlib', 'scikit-learn', 'tinydb', 'pygal', 'pygame', 'networkx']
+    os.system(pip_bin + ' install -U pip')
+    pkg_libs = ['matplotlib', 'scikit-learn', 'tinydb', 'pygal', 'pygame', 'networkx', 'bs4']
     for item in pkg_libs:
         pip_cmd = 'install'
         pip_arg = ''
@@ -79,8 +80,8 @@ def install_extern_lib():
 
 def get_git():
     os.chdir('libs')
-    os.system('git clone https://github.com/simpleai-team/simpleai.git simpleai')
-    os.system('git clone     https://github.com/zueve/neurolab.git neurolab')
+    os.system('[ -d simpleai ] || git clone https://github.com/simpleai-team/simpleai.git simpleai')
+    os.system('[ -d neurolab ] || git clone https://github.com/zueve/neurolab.git neurolab')
 
 def libs_path():
     pass
@@ -92,6 +93,6 @@ if __name__ == '__main__':
     print python_bin
     print pip_bin
 #     install_lib()
-#     install_extern_lib()
+    install_extern_lib()
     get_git()
    
