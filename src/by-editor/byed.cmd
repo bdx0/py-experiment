@@ -12,5 +12,5 @@ PATH=D:\tools\python2\;%~dp0;%PATH%
 
 set PYTHONPATH=%~dp0src;%PYTHONPATH%
 :: Defer control.
-python.exe "%~dp0src/byby/main.py" 12321 132 1
+python.exe "%~dp0src\byed\main.py" ex2
 pause
